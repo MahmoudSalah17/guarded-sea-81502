@@ -15,4 +15,4 @@ def wit_response(message_text):
 		pass
 	return (entity, value)		
 
-print(wit_response("500"))
+#print(wit_response("500"))

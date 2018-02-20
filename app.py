@@ -46,6 +46,7 @@ def webhook():
 						response = "l2"
 					else:
 						response = "Sorry, I don't get it"
+					print(response)
 					bot.send_text_message(sender_id, response)
 
 	return "ok", 200

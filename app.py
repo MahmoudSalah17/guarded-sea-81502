@@ -1,5 +1,6 @@
 import sys, os
 from flask import Flask, request
+from utils import wit_response
 from pymessenger import Bot
 
 PAGE_ACCESS_TOKEN = "EAAZAnbdAPplsBAD4LANNjKuCx5EqzXIhmfDl1hZCGAzMST7RfjdO7p6bPZCMhfyys9Nqk8kzLYuAskGrAjzSBLNc29SAjnV8XrRZC01XWA1ALZBhdGKaDoGAb7c1CD8y0e7ZAqaUfwi0BbqloN2NZAZALmlrvZCQ9M7wqyxCjRzKzdwZDZD"
@@ -35,8 +36,16 @@ def webhook():
 					else:
 						messaging_text = 'no text'
 
-					# Echo
-					response = messaging_text
+					
+					response = None
+					
+					entity, value = wit_response(messaging_text)
+					if entity == "number":
+						response = "3la wad3ak"
+					elif entity == "location":
+						response = "l2"
+					else:
+						response = "Sorry, I don't get it"
 					bot.send_text_message(sender_id, response)
 
 	return "ok", 200
